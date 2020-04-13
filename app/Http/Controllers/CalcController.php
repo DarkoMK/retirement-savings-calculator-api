@@ -25,8 +25,8 @@ class CalcController extends Controller
         return ['message' => 'Error happened.'];
     }
 
-    public function get()
+    public function get(Request $request)
     {
-        return CalcResource::collection(Calculator::all());
+        return CalcResource::collection(Calculator::where('name', '%like%', $request->query('q'))->get());
     }
 }
