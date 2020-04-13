@@ -27,6 +27,14 @@ class CalcController extends Controller
 
     public function get(Request $request)
     {
-        return CalcResource::collection(Calculator::where('name', '%like%', $request->query('q'))->get());
+        return CalcResource::collection(Calculator::where('name', 'LIKE', '%' . $request->query('q') . '%')->get());
+    }
+
+    public function delete(Request $request)
+    {
+        if (Calculator::find($request->input('id'))->first()->delete()) {
+            return ['message' => 'Item deleted.'];
+        }
+        return ['message' => 'Error happened.'];
     }
 }
