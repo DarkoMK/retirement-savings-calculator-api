@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Calculator;
+use App\Http\Resources\CalcResource;
 use Illuminate\Http\Request;
 
 class CalcController extends Controller
@@ -22,5 +23,10 @@ class CalcController extends Controller
             return ['message' => 'The data is saved.'];
         }
         return ['message' => 'Error happened.'];
+    }
+
+    public function get()
+    {
+        return CalcResource::collection(Calculator::all());
     }
 }

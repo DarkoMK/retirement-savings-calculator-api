@@ -19,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::post('/calculator', 'CalcController@save');
+Route::get('/calculator', 'CalcController@get');
