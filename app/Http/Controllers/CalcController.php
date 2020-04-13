@@ -30,6 +30,11 @@ class CalcController extends Controller
         return CalcResource::collection(Calculator::where('name', 'LIKE', '%' . $request->query('q') . '%')->get());
     }
 
+    public function getByID($id)
+    {
+        return CalcResource::collection(Calculator::where('id', $id)->get());
+    }
+
     public function delete(Request $request)
     {
         if (Calculator::find($request->input('id'))->first()->delete()) {

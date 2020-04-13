@@ -20,4 +20,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/calculator', 'CalcController@save');
 Route::get('/calculator', 'CalcController@get');
+Route::get('/calculator/{id}', 'CalcController@getByID');
 Route::post('/calculator/delete', 'CalcController@delete');
